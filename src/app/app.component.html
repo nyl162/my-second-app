@@ -12,10 +12,10 @@
   </tr>
   <tr>
     <td>
-      <app-inventory></app-inventory>
+      <app-inventory (itemSelected)="newItem($event)"></app-inventory>
     </td>
     <td>
-      <app-cart></app-cart>
+      <app-cart [CartItems]=itemlist></app-cart>
     </td>
   </tr>
 </table>

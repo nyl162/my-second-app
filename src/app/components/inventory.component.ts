@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output, EventEmitter} from '@angular/core';
 
 export interface LineItem{
   label: string;
@@ -13,6 +13,7 @@ export interface LineItem{
 })
 export class InventoryComponent implements OnInit {
 
+  //Hardcoded - inventory list
   inventory: LineItem[] = [
     {label: "Acron Squash" , image: "acorn_squash.png", quantity: 10},
     {label: "Apple" , image: "apple.png", quantity: 2},
@@ -22,11 +23,16 @@ export class InventoryComponent implements OnInit {
     {label: "Coconut" , image: "tomato.png", quantity: 1000}
   ];
 
+  @Output()
+  itemSelected = new EventEmitter<string>();
+
   constructor() { }
 
   ngOnInit() {
   }
   AddItem(selectIndex : number){
-    console.log("Item : " + this.inventory[selectIndex].label)
+    console.log("Item : " + this.inventory[selectIndex].label);
+    //Fire and event - itemSelected
+    this.itemSelected.next(this.inventory[selectIndex].label);
   }
 }
