@@ -24,7 +24,7 @@ export class InventoryComponent implements OnInit {
   ];
 
   @Output()
-  itemSelected = new EventEmitter<string>();
+  itemSelected = new EventEmitter<object>();
 
   constructor() { }
 
@@ -33,6 +33,7 @@ export class InventoryComponent implements OnInit {
   AddItem(selectIndex : number){
     console.log("Item : " + this.inventory[selectIndex].label);
     //Fire and event - itemSelected
-    this.itemSelected.next(this.inventory[selectIndex].label);
+    this.inventory[selectIndex].quantity--,
+    this.itemSelected.next(this.inventory[selectIndex]);
   }
 }
