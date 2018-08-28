@@ -1,5 +1,6 @@
 <div *ngFor="let i of CartItems; let n = index">
   <img src="/assets/fruits/{{i.image}}" class="thumbnail">
   <span class="item-label">{{i.label}}</span>
+  ({{i.quantity}})
   <button (click)=RemoveItem(n) [disabled]="(i.quantity <= 0)">Remove one</button>
 </div>

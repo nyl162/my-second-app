@@ -6,20 +6,29 @@ import { LineItem } from './components/inventory.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-/*
-export interface CartItem{
-  label: string;
-  image: string;
-}
-*/
+
 export class AppComponent {
   title = 'my-second-app';
 
   itemlist: LineItem[] = [];
 
   AddItem(item: LineItem){
-    console.log('>>>>>> new item: ', item);
-    this.itemlist.push(item);
+//[2, 5, 8, 1, 4].some(x => x > 10);  // false
+
+    let newItem: LineItem = Object.assign({},item);
+    console.log(this.itemlist.findIndex(x => x.label == newItem.label));
+    console.log('>>>>>> new item: ', newItem);
+
+    let index : number = this.itemlist.findIndex(x => x.label == newItem.label)
+
+    //if (this.itemlist.some(x => x.label == newItem.label)){
+    if (index < 0 ){
+      newItem.quantity = 1;
+      this.itemlist.push(newItem);
+    }else{
+      this.itemlist[index].quantity++;
+    }
+
     //this.addToCart.next(this.itemlist);
   }
 }
