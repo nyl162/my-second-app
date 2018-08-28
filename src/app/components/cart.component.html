@@ -2,5 +2,5 @@
   <img src="/assets/fruits/{{i.image}}" class="thumbnail">
   <span class="item-label">{{i.label}}</span>
   ({{i.quantity}})
-  <button (click)=RemoveItem(n) [disabled]="(i.quantity <= 0)">Remove one</button>
+  <button (click)=RemoveItem(n)>Remove one</button>
 </div>

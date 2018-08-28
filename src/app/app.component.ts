@@ -31,4 +31,8 @@ export class AppComponent {
 
     //this.addToCart.next(this.itemlist);
   }
+
+  ReturnItem(ReturnItem: string){
+    console.log('>>>>>> Return item: ', ReturnItem);
+  }
 }

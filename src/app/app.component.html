@@ -15,7 +15,7 @@
       <app-inventory (itemSelected)="AddItem($event)"></app-inventory>
     </td>
     <td>
-      <app-cart [CartItems]=itemlist></app-cart>
+      <app-cart [CartItems]=itemlist (itemReturn)="ReturnItem($event)"></app-cart>
     </td>
   </tr>
 </table>

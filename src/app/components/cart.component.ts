@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input , Output, EventEmitter} from '@angular/core';
 
 import { LineItem } from './inventory.component';
 
@@ -12,12 +12,20 @@ export class CartComponent implements OnInit {
   @Input()
   CartItems: LineItem[] = [];
 
+  @Output()
+  itemReturn = new EventEmitter<string>();
+
   constructor() { }
 
   ngOnInit() {
   }
   RemoveItem(itemRemoved:number){
     console.log("remove this item -", this.CartItems[itemRemoved].label);
-    this.CartItems.splice(itemRemoved,1);
+    if(this.CartItems[itemRemoved].quantity < 2 ){
+      this.CartItems.splice(itemRemoved,1);
+    }else{
+      this.CartItems[itemRemoved].quantity--;
+      this.itemReturn.next(this.CartItems[itemRemoved].label);
+    }
   }
 }
