@@ -1,4 +1,4 @@
-import { Component, OnInit,Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 
 export interface LineItem{
   label: string;
@@ -24,7 +24,7 @@ export class InventoryComponent implements OnInit {
   ];
 
   @Output()
-  itemSelected = new EventEmitter<object>();
+  itemSelected = new EventEmitter<LineItem>();
 
   constructor() { }
 
@@ -33,7 +33,19 @@ export class InventoryComponent implements OnInit {
   AddItem(selectIndex : number){
     console.log("Item : " + this.inventory[selectIndex].label);
     //Fire and event - itemSelected
-    this.inventory[selectIndex].quantity--,
+    this.inventory[selectIndex].quantity--;
+    //let newItem: LineItem = Object.assign({},this.inventory[selectIndex]);
+    //newItem.quantity = 1;
     this.itemSelected.next(this.inventory[selectIndex]);
   }
+/*
+  AddItem(selectIndex : number){
+    console.log("Item : " + this.inventory[selectIndex].label);
+    //Fire and event - itemSelected
+    this.inventory[selectIndex].quantity--;
+    let newItem: LineItem = Object.assign({},this.inventory[selectIndex]);
+    newItem.quantity = 1;
+    this.itemSelected.next(newItem);
+  }
+  */
 }

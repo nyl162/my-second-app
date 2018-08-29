@@ -4,3 +4,6 @@
   ({{i.quantity}})
   <button (click)=RemoveItem(n)>Remove one</button>
 </div>
+<div *ngIf="CartItems.length <= 0">
+  <h3>Empty Cart</h3>
+</div>

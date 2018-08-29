@@ -21,11 +21,13 @@ export class CartComponent implements OnInit {
   }
   RemoveItem(itemRemoved:number){
     console.log("remove this item -", this.CartItems[itemRemoved].label);
+    this.itemReturn.next(this.CartItems[itemRemoved].label);
     if(this.CartItems[itemRemoved].quantity < 2 ){
       this.CartItems.splice(itemRemoved,1);
     }else{
       this.CartItems[itemRemoved].quantity--;
-      this.itemReturn.next(this.CartItems[itemRemoved].label);
     }
+    
+
   }
 }
